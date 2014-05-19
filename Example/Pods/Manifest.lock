@@ -1,0 +1,14 @@
+PODS:
+  - BlurImageProcessor (1.0.0)
+
+DEPENDENCIES:
+  - BlurImageProcessor (from `../`)
+
+EXTERNAL SOURCES:
+  BlurImageProcessor:
+    :path: ../
+
+SPEC CHECKSUMS:
+  BlurImageProcessor: 268eb80fe8c605c4b2eb04356715635649b0449b
+
+COCOAPODS: 0.32.1
