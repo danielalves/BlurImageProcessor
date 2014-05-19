@@ -22,6 +22,11 @@ it simply add the following line to your Podfile:
 
 Daniel L. Alves
 
+Collaborators
+--------------
+
+- [Gustavo Barbosa](http://github.com/barbosa) ([@gustavocsb](https://twitter.com/gustavocsb))
+
 ## License
 
 BlurImageProcessor is available under the MIT license. See the LICENSE file for more info.
