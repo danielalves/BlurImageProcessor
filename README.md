@@ -20,13 +20,9 @@ it simply add the following line to your Podfile:
 
 ## Author
 
-Collaborators
---------------
-
 - [Daniel L. Alves](http://github.com/danielalves) ([@alveslopesdan](https://twitter.com/alveslopesdan))
 
-Collaborators
---------------
+## Collaborators
 
 - [Gustavo Barbosa](http://github.com/barbosa) ([@gustavocsb](https://twitter.com/gustavocsb))
 
