@@ -18,4 +18,8 @@ profile
 DerivedData
 *.hmap
 *.ipa
+*.xcuserstate
+*.idea
 
+# Git
+*.orig
