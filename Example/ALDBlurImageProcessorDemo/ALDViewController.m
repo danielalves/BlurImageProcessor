@@ -23,6 +23,9 @@ static float lerp( float percent, float x, float y ){ return x + ( percent * ( y
 
 @interface ALDViewController()< UITextFieldDelegate,
                                 UIAlertViewDelegate,
+                                UIActionSheetDelegate,
+                                UIImagePickerControllerDelegate,
+                                UINavigationControllerDelegate,
                                 ALDBlurImageProcessorDelegate >
 {
     BOOL fixingValues;
@@ -140,7 +143,8 @@ static float lerp( float percent, float x, float y ){ return x + ( percent * ( y
 -( IBAction )onSliderChanged
 {
     [blurImageProcessor asyncBlurWithRadius: lerp( blurSlider.value, [blurRadiusMinValue.text integerValue], [blurRadiusMaxValue.text integerValue] )
-                              andIterations: lerp( blurSlider.value, [blurIterationsMinValue.text integerValue], [blurIterationsMaxValue.text integerValue] )];
+                                 iterations: lerp( blurSlider.value, [blurIterationsMinValue.text integerValue], [blurIterationsMaxValue.text integerValue] )
+                     cancelingLastOperation: NO];
 }
 
 -( IBAction )onNotificationMethodChanged:( UISwitch * )strategySwitch
@@ -155,6 +159,16 @@ static float lerp( float percent, float x, float y ){ return x + ( percent * ( y
         [self stopListeningToALDImageProcessorNotifications];
         blurImageProcessor.delegate = self;
     }
+}
+
+-( IBAction )onImageTapped
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle: @"Change blurred image"
+                                                             delegate: self
+                                                    cancelButtonTitle: @"Cancel"
+                                               destructiveButtonTitle: nil
+                                                    otherButtonTitles: @"Take a photo", @"Pick from album", nil];
+    [actionSheet showInView:self.view];
 }
 
 #pragma mark - ALDBlurImageProcessor Notifications
@@ -299,6 +313,67 @@ static float lerp( float percent, float x, float y ){ return x + ( percent * ( y
 -( void )textFieldDidEndEditing:( UITextField * )textField
 {
     [self onTextFieldValueChanged: textField];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ( buttonIndex == actionSheet.cancelButtonIndex )
+        return;
+    
+    if( buttonIndex == 0 )
+    {
+        if( [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] )
+        {
+            [self showImagePickerForSourceType: UIImagePickerControllerSourceTypeCamera];
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops!"
+                                                            message: @"Device has no camera"
+                                                           delegate: nil
+                                                  cancelButtonTitle: @"Ok"
+                                                  otherButtonTitles: nil];
+            [alert show];
+        }
+    }
+    else
+    {
+        [self showImagePickerForSourceType: UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+}
+
+-( void )showImagePickerForSourceType:( UIImagePickerControllerSourceType )sourceType
+{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = sourceType;
+    imagePickerController.delegate = self;
+    
+    if( sourceType == UIImagePickerControllerSourceTypeCamera )
+    {
+        imagePickerController.showsCameraControls = YES;
+    }
+    
+    [self presentViewController: imagePickerController
+                       animated: YES
+                     completion: nil];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+-( void )imagePickerController:( UIImagePickerController * )picker didFinishPickingMediaWithInfo:( NSDictionary * )info
+{
+    UIImage *image = [info valueForKey: UIImagePickerControllerOriginalImage];
+    if( image )
+    {
+        blurTargetImageView.image = image;
+        blurImageProcessor.imageToProcess = image;
+        [self onSliderChanged];
+    }
+    
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 #pragma mark - UIAlertViewDelegate

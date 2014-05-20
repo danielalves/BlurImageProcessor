@@ -21,13 +21,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blur-test-target" translatesAutoresizingMaskIntoConstraints="NO" id="ELe-VF-aRo">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blur-test-target" translatesAutoresizingMaskIntoConstraints="NO" id="ELe-VF-aRo">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="240" id="RJY-eI-GZI"/>
                                             <constraint firstAttribute="width" constant="320" id="cxN-w0-Lvg"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="lsy-hA-g2I" appends="YES" id="KDx-x2-Khf"/>
+                                        </connections>
                                     </imageView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MTr-yd-Wrd">
                                         <rect key="frame" x="30" y="260" width="260" height="31"/>
@@ -294,6 +298,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lsy-hA-g2I">
+                    <connections>
+                        <action selector="onImageTapped" destination="vXZ-lx-hvc" id="8vk-MH-Eqn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="105" y="198"/>
         </scene>
