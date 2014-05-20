@@ -47,6 +47,7 @@ static float lerp( float percent, float x, float y ){ return x + ( percent * ( y
     __weak IBOutlet UITextField *blurIterationsMaxValue;
     
     __weak IBOutlet UISwitch *notificationMethodSwitch;
+    __weak IBOutlet UISwitch *cancelLastOperationSwitch;
 }
 @end
 
@@ -144,7 +145,7 @@ static float lerp( float percent, float x, float y ){ return x + ( percent * ( y
 {
     [blurImageProcessor asyncBlurWithRadius: lerp( blurSlider.value, [blurRadiusMinValue.text integerValue], [blurRadiusMaxValue.text integerValue] )
                                  iterations: lerp( blurSlider.value, [blurIterationsMinValue.text integerValue], [blurIterationsMaxValue.text integerValue] )
-                     cancelingLastOperation: NO];
+                     cancelingLastOperation: cancelLastOperationSwitch.on];
 }
 
 -( IBAction )onNotificationMethodChanged:( UISwitch * )strategySwitch
