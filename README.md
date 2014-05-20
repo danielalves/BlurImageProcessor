@@ -14,7 +14,7 @@ radiuses and iterations, its possible to create many different results and even 
 Blur operations can be synchronous and asynchronous. Synchronous operations run on the thread/operation queue from which they were called. Each ```ALDBlurImageProcessor``` object has its own processing queue to run asynchronous operations, so it it easy to manage them. Besides that, all delegate callbacks and notifications are called/fired on the main thread, so there's no need to worry about using the new blurred images passed as parameters directly into the user interface.
 
 BlurImageProcessor tries to achieve a good balance between memory and performance. It also listens to 
-UIApplicationDidReceiveMemoryWarningNotification notifications to clean temporary internal buffers on low memory conditions.
+```UIApplicationDidReceiveMemoryWarningNotification``` notifications to clean temporary internal buffers on low memory conditions.
 
 ## Usage
 
