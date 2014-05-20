@@ -98,14 +98,14 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
 /**
  *  Generated a new allocated blurred image synchronously. This method only calls the delegate/fires notifications in error cases.
  *
- *  @param radius              The radius of the blur, specifying how many pixels will be considered when generating the output pixel
- *                             value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
- *                             by 1. If radius is equal to zero, no blur will happen and the original image will be passed as the result.
+ *  @param radius             The radius of the blur, specifying how many pixels will be considered when generating the output pixel
+ *                            value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
+ *                            by 1. If radius is equal to zero, no blur will happen and the original image will be passed as the result.
  *
- *  @param nIterations         The number of times radius will be applied to the image. The higher nIterations is, the slower
- *                             the output will be generated. Varying the number of iterations, combined with a static value of
- *                             radius, typically create a smoother blurred image than just increasing the radius value. If nIterations
- *                             is equal to zero, no blur will happen and the original image will be passed as the result.
+ *  @param iterations         The number of times radius will be applied to the image. The higher iterations is, the slower
+ *                            the output will be generated. Varying the number of iterations, combined with a static value of
+ *                            radius, typically create a smoother blurred image than just increasing the radius value. If iterations
+ *                            is equal to zero, no blur will happen and the original image will be passed as the result.
  *
  *  @return A new allocated blurred image
  *
@@ -114,20 +114,20 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *  @see asyncBlurWithRadius:andIterations:
  *  @see asyncBlurWithRadius:andIterations:cancelingLastOperation:
  */
--( UIImage * )syncBlurWithRadius:( uint32_t )radius andIterations:( uint8_t )nIterations;
+-( UIImage * )syncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations;
 
 /**
  *  This is the same as calling asyncBlurWithRadius:andIterations:cancelingLastOperation: with
  *  cancelingLastOperation equal to NO.
  *
- *  @param radius              The radius of the blur, specifying how many pixels will be considered when generating the output pixel
- *                             value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
- *                             by 1. If radius is equal to zero, no blur will happen and the original image will be passed as the result.
+ *  @param radius             The radius of the blur, specifying how many pixels will be considered when generating the output pixel
+ *                            value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
+ *                            by 1. If radius is equal to zero, no blur will happen and the original image will be passed as the result.
  *
- *  @param nIterations         The number of times radius will be applied to the image. The higher nIterations is, the slower
- *                             the output will be generated. Varying the number of iterations, combined with a static value of
- *                             radius, typically create a smoother blurred image than just increasing the radius value. If nIterations
- *                             is equal to zero, no blur will happen and the original image will be passed as the result.
+ *  @param iterations         The number of times radius will be applied to the image. The higher iterations is, the slower
+ *                            the output will be generated. Varying the number of iterations, combined with a static value of
+ *                            radius, typically create a smoother blurred image than just increasing the radius value. If iterations
+ *                            is equal to zero, no blur will happen and the original image will be passed as the result.
  *
  *  @throws NSInvalidArgumentException if imageToProcess is nil
  *
@@ -135,7 +135,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *  @see asyncBlurWithRadius:andIterations:cancelingLastOperation:
  *  @see cancelAsyncBlurOperations
  */
--( void )asyncBlurWithRadius:( uint32_t )radius andIterations:( uint8_t )nIterations;
+-( void )asyncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations;
 
 /**
  *  Queues an asynchronous blur operation, targeting imageToProcess, on this object operation queue. When the new 
@@ -145,9 +145,9 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *                             value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
  *                             by 1. If radius is equal to zero, no blur will happen and the original image will be passed as the result.
  *
- *  @param nIterations         The number of times radius will be applied to the image. The higher nIterations is, the slower
+ *  @param iterations          The number of times radius will be applied to the image. The higher iterations is, the slower
  *                             the output will be generated. Varying the number of iterations, combined with a static value of
- *                             radius, typically create a smoother blurred image than just increasing the radius value. If nIterations
+ *                             radius, typically create a smoother blurred image than just increasing the radius value. If iterations
  *                             is equal to zero, no blur will happen and the original image will be passed as the result.
  *
  *  @param cancelLastOperation YES if the last queued asynchronous blur operation should be canceled. NO otherwise. If there is
@@ -161,7 +161,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *  @see asyncBlurWithRadius:andIterations:
  *  @see cancelAsyncBlurOperations
  */
--( void )asyncBlurWithRadius:( uint32_t )radius andIterations:( uint8_t )nIterations cancelingLastOperation:( BOOL )cancelLastOperation;
+-( void )asyncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations cancelingLastOperation:( BOOL )cancelLastOperation;
 
 /**
  *  Cancels all asynchronous blur operations queued by previous calls to asyncBlurWithRadius:andIterations:

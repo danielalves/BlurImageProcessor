@@ -188,8 +188,12 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey =
 
 -( UIImage * )blurImage:( UIImage * )originalImage
              withRadius:( uint32_t )radius
-          andIterations:( uint8_t )nIterations
+          andIterations:( uint8_t )iterations
 {
+    UIImage * cachedImage = [ALDBlurImageProcessor cachedBlurredImageForImage: _imageToProcess radius: radius iterations: iterations];
+    if( cachedImage )
+        return cachedImage;
+    
     UIImage *finalImage = nil;
     
     @synchronized( self )
@@ -197,7 +201,7 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey =
         if( _imageToProcess )
         {
             vImage_Buffer finalImageBuffer;
-            if( nIterations == 0 || radius == 0 )
+            if( iterations == 0 || radius == 0 )
             {
                 finalImageBuffer = originalImageBuffer;
             }
@@ -223,7 +227,7 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey =
 
                     // The reason of the loop below is that many convolve iterations generate a better blurred image
                     // than applying a greater convolve radius
-                    for( uint16_t i = 0 ; i < nIterations ; ++i )
+                    for( uint16_t i = 0 ; i < iterations ; ++i )
                     {
                         vImage_Error error = vImageBoxConvolve_ARGB8888( &tempImageBuffer, &processedImageBuffer, NULL, 0, 0, finalRadius, finalRadius, NULL, kvImageEdgeExtend );
                         if( error != kvImageNoError )
@@ -263,6 +267,8 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey =
             finalImage = [UIImage imageWithCGImage: finalImageRef scale: originalImage.scale orientation: originalImage.imageOrientation];
             CGImageRelease( finalImageRef );
             CGContextRelease( finalImageContext );
+            
+            [ALDBlurImageProcessor cacheBlurredImage: finalImage forImage: _imageToProcess radius: radius iterations: iterations];
         }
     }
     
@@ -288,47 +294,48 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey =
                                                             object: weakSelf
                                                           userInfo: @{ ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey: @( error ) }];
     }];
-    
+
     [[NSOperationQueue mainQueue] addOperations: @[ errorNotificationOperation ] waitUntilFinished: YES];
 }
 
--( UIImage * )syncBlurWithRadius:( uint32_t )radius andIterations:( uint8_t )nIterations
+-( UIImage * )syncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations
 {
     if( !_imageToProcess )
         [NSException raise: NSInvalidArgumentException format: @"%s must not be nil", EVAL_AND_STRINGIFY(_imageToProcess)];
     
     return [self blurImage: _imageToProcess
                 withRadius: radius
-             andIterations: nIterations];
+             andIterations: iterations];
 }
 
--( void )asyncBlurWithRadius:( uint32_t )radius andIterations:( uint8_t )nIterations
+-( void )asyncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations
 {
-    [self asyncBlurWithRadius: radius andIterations: nIterations cancelingLastOperation: NO];
+    [self asyncBlurWithRadius: radius iterations: iterations cancelingLastOperation: NO];
 }
 
--( void )asyncBlurWithRadius:( uint32_t )radius andIterations:( uint8_t )nIterations cancelingLastOperation:( BOOL )cancelLastOperation
+-( void )asyncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations cancelingLastOperation:( BOOL )cancelLastOperation
 {
     if( !_imageToProcess )
         [NSException raise: NSInvalidArgumentException format: @"%s must not be nil", EVAL_AND_STRINGIFY(_imageToProcess)];
     
     if( cancelLastOperation )
         [lastOperation cancel];
-    
-    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
-    
-    __weak NSBlockOperation *weakOperation = operation;
+
+    NSBlockOperation *blurOperation = [[NSBlockOperation alloc] init];
+
+    __weak NSBlockOperation *weakOperation = blurOperation;
     __weak ALDBlurImageProcessor *weakSelf = self;
     
-    [operation addExecutionBlock:^{
+    [blurOperation addExecutionBlock:^{
 
         UIImage *blurredImage = [weakSelf blurImage: _imageToProcess
                                          withRadius: radius
-                                      andIterations: nIterations];
+                                      andIterations: iterations];
         
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        NSBlockOperation *notificationOperation = [[NSBlockOperation alloc] init];
+        [notificationOperation addExecutionBlock: ^{
             
-            if( weakOperation.isCancelled )
+            if( !weakOperation || weakOperation.isCancelled )
                 return;
             
             if( [weakSelf.delegate respondsToSelector: @selector( onALDBlurImageProcessor:newBlurrredImage: )] )
@@ -338,16 +345,18 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey =
                                                                 object: weakSelf
                                                               userInfo: @{ ALDBlurImageProcessorImageReadyNotificationBlurrredImageKey: blurredImage }];
         }];
+        
+        [[NSOperationQueue mainQueue] addOperation: notificationOperation];
     }];
     
     // TODO : These 2 NSBlockOperation properties, queuePriority and threadPriority, could
     // be parameterized
-    operation.queuePriority = NSOperationQueuePriorityVeryHigh;
-    operation.threadPriority = 1.0f;
+    blurOperation.queuePriority = NSOperationQueuePriorityVeryHigh;
+    blurOperation.threadPriority = 1.0f;
     
-    [imageBlurProcessingQueue addOperation: operation];
+    [imageBlurProcessingQueue addOperation: blurOperation];
     
-    lastOperation = operation;
+    lastOperation = blurOperation;
 }
 
 #pragma mark - NSOperationQueue Management
@@ -355,6 +364,64 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey =
 -( void )cancelAsyncBlurOperations
 {
     [imageBlurProcessingQueue cancelAllOperations];
+}
+
+#pragma mark - Class methods
+
++( NSString * )blurredImagesCacheKeyForImage:( UIImage * )image
+                                      radius:( uint32_t )radius
+                                  iterations:( uint8_t )iterations
+{
+    return [NSString stringWithFormat: @"%p-%d-%d", image, radius, iterations];
+}
+
++( NSMapTable * )blurredImagesCache
+{
+    @synchronized( self )
+    {
+        static NSMapTable *blurredImagesCache = nil;
+        if( !blurredImagesCache )
+            blurredImagesCache = [NSMapTable strongToWeakObjectsMapTable];
+        
+        return blurredImagesCache;
+    }
+}
+
++( UIImage * )cachedBlurredImageForImage:( UIImage * )image
+                                  radius:( uint32_t )radius
+                              iterations:( uint8_t )iterations
+{
+    // We don't cache original images
+    if( radius == 0 || iterations == 0 )
+        return nil;
+    
+    @synchronized( self )
+    {
+        NSString *cacheKey = [ALDBlurImageProcessor blurredImagesCacheKeyForImage: image
+                                                                           radius: radius
+                                                                       iterations: iterations];
+        
+        return [[ALDBlurImageProcessor blurredImagesCache] objectForKey: cacheKey];
+    }
+}
+
++( void )cacheBlurredImage:( UIImage * )blurredImage
+                  forImage:( UIImage * )image
+                    radius:( uint32_t )radius
+                iterations:( uint8_t )iterations
+{
+    // We don't want to cache original images
+    if( radius == 0 || iterations == 0 )
+        return;
+    
+    @synchronized( self )
+    {
+        NSString *cacheKey = [ALDBlurImageProcessor blurredImagesCacheKeyForImage: image
+                                                                           radius: radius
+                                                                       iterations: iterations];
+        
+        [[ALDBlurImageProcessor blurredImagesCache] setObject: blurredImage forKey: cacheKey];
+    }
 }
 
 @end
