@@ -5,6 +5,10 @@
 
 BlurImageProcessor offers a very easy and practical way to generate blurred images in real time.
 
+<p align='center'>
+    <img src='./blur-image-processor.gif' width=320 height=568/>
+</p>
+
 ## Usage
 
 To run the example project; clone the repo, and run `pod install` from the Example directory first.
