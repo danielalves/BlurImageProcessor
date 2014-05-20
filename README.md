@@ -20,7 +20,11 @@ it simply add the following line to your Podfile:
 
 ## Author
 
-Daniel L. Alves
+- [Daniel L. Alves](http://github.com/danielalves) ([@alveslopesdan](https://twitter.com/alveslopesdan))
+
+## Collaborators
+
+- [Gustavo Barbosa](http://github.com/barbosa) ([@gustavocsb](https://twitter.com/gustavocsb))
 
 ## License
 
