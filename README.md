@@ -68,8 +68,6 @@ Then set `blurImageProcessor`'s delegate:
 And finally implement its methods:
 
 ```obj
-#pragma mark - ALDBlurImageProcessorDelegate
-
 -( void )onALDBlurImageProcessor:( ALDBlurImageProcessor * )blurImageProcessor newBlurrredImage:( UIImage * )image
 {
     blurTargetImageView.image = image;
@@ -79,7 +77,6 @@ And finally implement its methods:
 {
     NSLog(@"%@", error.localizedDescription);
 }
-
 ```
 
 ### NSNotificationCenter
