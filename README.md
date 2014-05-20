@@ -5,8 +5,8 @@
 
 BlurImageProcessor offers a very easy and practical way to generate blurred images in real time.
 
-<p align='center'>
-    <img src='./blur-image-processor.gif' width=320 height=568/>
+<p align="center">
+    <img src="./blur-image-processor.gif" width="320" height="568"/>
 </p>
 
 ## Usage
@@ -22,7 +22,9 @@ iOS 6.0 or higher
 BlurImageProcessor is available through [CocoaPods](http://cocoapods.org), to install
 it simply add the following line to your Podfile:
 
+```ruby
     pod "BlurImageProcessor"
+```
 
 ## Author
 
