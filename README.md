@@ -89,7 +89,7 @@ Then set `blurImageProcessor`'s delegate:
 
 And finally implement its methods:
 
-```obj
+```objc
 -( void )onALDBlurImageProcessor:( ALDBlurImageProcessor * )blurImageProcessor newBlurrredImage:( UIImage * )image
 {
     blurTargetImageView.image = image;
