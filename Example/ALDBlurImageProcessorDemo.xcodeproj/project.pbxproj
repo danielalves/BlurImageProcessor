@@ -21,7 +21,7 @@
 		124050AC1925349700B42AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1240508B1925349700B42AFA /* Foundation.framework */; };
 		124050AD1925349700B42AFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1240508F1925349700B42AFA /* UIKit.framework */; };
 		124050B51925349700B42AFA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124050B31925349700B42AFA /* InfoPlist.strings */; };
-		124050B71925349700B42AFA /* ALDBlurImageProcessorDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 124050B61925349700B42AFA /* ALDBlurImageProcessorDemoTests.m */; };
+		124050B71925349700B42AFA /* ALDBlurImageProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 124050B61925349700B42AFA /* ALDBlurImageProcessorTests.m */; };
 		4390618F1646452787328752 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28794DA447364087A47CB42F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -51,11 +51,11 @@
 		124050A01925349700B42AFA /* ALDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALDViewController.h; sourceTree = "<group>"; };
 		124050A11925349700B42AFA /* ALDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALDViewController.m; sourceTree = "<group>"; };
 		124050A31925349700B42AFA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		124050A91925349700B42AFA /* ALDBlurImageProcessorDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALDBlurImageProcessorDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		124050A91925349700B42AFA /* ALDBlurImageProcessorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALDBlurImageProcessorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		124050AA1925349700B42AFA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		124050B21925349700B42AFA /* ALDBlurImageProcessorDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ALDBlurImageProcessorDemoTests-Info.plist"; sourceTree = "<group>"; };
+		124050B21925349700B42AFA /* ALDBlurImageProcessorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ALDBlurImageProcessorTests-Info.plist"; sourceTree = "<group>"; };
 		124050B41925349700B42AFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		124050B61925349700B42AFA /* ALDBlurImageProcessorDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALDBlurImageProcessorDemoTests.m; sourceTree = "<group>"; };
+		124050B61925349700B42AFA /* ALDBlurImageProcessorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALDBlurImageProcessorTests.m; sourceTree = "<group>"; };
 		28794DA447364087A47CB42F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B254F9DFF5C8436498BF8920 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				124050911925349700B42AFA /* ALDBlurImageProcessorDemo */,
-				124050B01925349700B42AFA /* ALDBlurImageProcessorDemoTests */,
+				124050B01925349700B42AFA /* ALDBlurImageProcessorTests */,
 				1240508A1925349700B42AFA /* Frameworks */,
 				124050891925349700B42AFA /* Products */,
 				B254F9DFF5C8436498BF8920 /* Pods.xcconfig */,
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				124050881925349700B42AFA /* ALDBlurImageProcessorDemo.app */,
-				124050A91925349700B42AFA /* ALDBlurImageProcessorDemoTests.xctest */,
+				124050A91925349700B42AFA /* ALDBlurImageProcessorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,19 +144,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		124050B01925349700B42AFA /* ALDBlurImageProcessorDemoTests */ = {
+		124050B01925349700B42AFA /* ALDBlurImageProcessorTests */ = {
 			isa = PBXGroup;
 			children = (
-				124050B61925349700B42AFA /* ALDBlurImageProcessorDemoTests.m */,
+				124050B61925349700B42AFA /* ALDBlurImageProcessorTests.m */,
 				124050B11925349700B42AFA /* Supporting Files */,
 			);
-			path = ALDBlurImageProcessorDemoTests;
+			path = ALDBlurImageProcessorTests;
 			sourceTree = "<group>";
 		};
 		124050B11925349700B42AFA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				124050B21925349700B42AFA /* ALDBlurImageProcessorDemoTests-Info.plist */,
+				124050B21925349700B42AFA /* ALDBlurImageProcessorTests-Info.plist */,
 				124050B31925349700B42AFA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -184,9 +184,9 @@
 			productReference = 124050881925349700B42AFA /* ALDBlurImageProcessorDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		124050A81925349700B42AFA /* ALDBlurImageProcessorDemoTests */ = {
+		124050A81925349700B42AFA /* ALDBlurImageProcessorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 124050BD1925349700B42AFA /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessorDemoTests" */;
+			buildConfigurationList = 124050BD1925349700B42AFA /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessorTests" */;
 			buildPhases = (
 				124050A51925349700B42AFA /* Sources */,
 				124050A61925349700B42AFA /* Frameworks */,
@@ -197,9 +197,9 @@
 			dependencies = (
 				124050AF1925349700B42AFA /* PBXTargetDependency */,
 			);
-			name = ALDBlurImageProcessorDemoTests;
+			name = ALDBlurImageProcessorTests;
 			productName = TestBlurTests;
-			productReference = 124050A91925349700B42AFA /* ALDBlurImageProcessorDemoTests.xctest */;
+			productReference = 124050A91925349700B42AFA /* ALDBlurImageProcessorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -231,7 +231,7 @@
 			projectRoot = "";
 			targets = (
 				124050871925349700B42AFA /* ALDBlurImageProcessorDemo */,
-				124050A81925349700B42AFA /* ALDBlurImageProcessorDemoTests */,
+				124050A81925349700B42AFA /* ALDBlurImageProcessorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -305,7 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				124050B71925349700B42AFA /* ALDBlurImageProcessorDemoTests.m in Sources */,
+				124050B71925349700B42AFA /* ALDBlurImageProcessorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +463,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "ALDBlurImageProcessorDemoTests/ALDBlurImageProcessorDemoTests-Info.plist";
-				PRODUCT_NAME = ALDBlurImageProcessorDemoTests;
+				PRODUCT_NAME = ALDBlurImageProcessorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -481,7 +481,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ALDBlurImageProcessorDemo/ALDBlurImageProcessorDemo-Prefix.pch";
 				INFOPLIST_FILE = "ALDBlurImageProcessorDemoTests/ALDBlurImageProcessorDemoTests-Info.plist";
-				PRODUCT_NAME = ALDBlurImageProcessorDemoTests;
+				PRODUCT_NAME = ALDBlurImageProcessorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -508,7 +508,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		124050BD1925349700B42AFA /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessorDemoTests" */ = {
+		124050BD1925349700B42AFA /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				124050BE1925349700B42AFA /* Debug */,
