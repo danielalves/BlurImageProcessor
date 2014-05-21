@@ -207,7 +207,7 @@ static float lerp( float percent, float x, float y ){ return x + ( percent * ( y
 
 -( void )onBlurImageProcessorError:( NSNotification * )notification
 {
-    [self showBlurImageProcessorError: notification.userInfo[ ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey ]];
+    [self showBlurImageProcessorErrorCode: notification.userInfo[ ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeKey ]];
 }
 
 #pragma mark - ALDBlurImageProcessorDelegate
@@ -217,9 +217,9 @@ static float lerp( float percent, float x, float y ){ return x + ( percent * ( y
     [self applyBlurredImage: image];
 }
 
--( void )onALDBlurImageProcessor:( ALDBlurImageProcessor * )blurImageProcessor blurProcessingError:( NSNumber * )error
+-( void )onALDBlurImageProcessor:( ALDBlurImageProcessor * )blurImageProcessor blurProcessingErrorCode:( NSNumber * )errorCode
 {
-    [self showBlurImageProcessorError: error];
+    [self showBlurImageProcessorErrorCode: errorCode];
 }
 
 #pragma mark - Keyboard Management
@@ -390,13 +390,13 @@ static float lerp( float percent, float x, float y ){ return x + ( percent * ( y
     blurTargetImageView.image = image;
 }
 
--( void )showBlurImageProcessorError:( NSNumber * )error
+-( void )showBlurImageProcessorErrorCode:( NSNumber * )errorCode
 {
     if( errorAlertView )
         return;
     
     errorAlertView = [[UIAlertView alloc] initWithTitle: @"Blur Processing Error"
-                                                message: [NSString stringWithFormat: @"Could not generate blurred image: vImage_Error %@", error]
+                                                message: [NSString stringWithFormat: @"Could not generate blurred image: vImage_Error %@", errorCode]
                                                delegate: nil
                                       cancelButtonTitle: @"Ok"
                                       otherButtonTitles: nil];

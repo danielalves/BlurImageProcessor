@@ -21,7 +21,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageReadyNotification;
 FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageReadyNotificationBlurrredImageKey;
 
 /**
- *  The userInfo dictionary contains information about the blurr processing error. Use the key ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey
+ *  The userInfo dictionary contains information about the blurr processing error. Use the key ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeKey
  *  to get it.
  */
 FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNotification;
@@ -29,7 +29,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
 /**
  *  The key for a NSNumber object, which boxes a vImage_Error error code.
  */
-FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey;
+FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeKey;
 
 
 
@@ -45,9 +45,9 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
          *  Tells the delegate when a blurr processing error has occurred.
          *
          *  @param blurImageProcessor The object which generated the call.
-         *  @param error              A NSNumber object boxing a vImage_Error error code.
+         *  @param errorCode          A NSNumber object boxing a vImage_Error error code.
          */
-        -( void )onALDBlurImageProcessor:( ALDBlurImageProcessor * )blurImageProcessor blurProcessingError:( NSNumber * )error;
+        -( void )onALDBlurImageProcessor:( ALDBlurImageProcessor * )blurImageProcessor blurProcessingErrorCode:( NSNumber * )errorCode;
 
         /**
          *  Tells the delegate when a new blurred image has been generated.
