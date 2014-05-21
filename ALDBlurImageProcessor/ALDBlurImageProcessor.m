@@ -291,12 +291,44 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
                  errorCode: errorCode];
 }
 
--( void )asyncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations
+-( void )asyncBlurWithRadius:( uint32_t )radius
+                  iterations:( uint8_t )iterations
 {
-    [self asyncBlurWithRadius: radius iterations: iterations cancelingLastOperation: NO];
+    [self asyncBlurWithRadius: radius
+                   iterations: iterations
+       cancelingLastOperation: NO
+                 successBlock: nil
+                   errorBlock: nil];
 }
 
--( void )asyncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations cancelingLastOperation:( BOOL )cancelLastOperation
+-( void )asyncBlurWithRadius:( uint32_t )radius
+                  iterations:( uint8_t )iterations
+      cancelingLastOperation:( BOOL )cancelLastOperation
+{
+    [self asyncBlurWithRadius: radius
+                   iterations: iterations
+       cancelingLastOperation: cancelLastOperation
+                 successBlock: nil
+                   errorBlock: nil];
+}
+
+-( void )asyncBlurWithRadius:( uint32_t )radius
+                  iterations:( uint8_t )iterations
+             successBlock:( void(^)(UIImage *blurredImage) )successBlock
+               errorBlock:( void(^)(NSNumber *errorCode) )errorBlock;
+{
+    [self asyncBlurWithRadius: radius
+                   iterations: iterations
+       cancelingLastOperation: NO
+                 successBlock: successBlock
+                   errorBlock: errorBlock];
+}
+
+-( void )asyncBlurWithRadius:( uint32_t )radius
+                  iterations:( uint8_t )iterations
+      cancelingLastOperation:( BOOL )cancelLastOperation
+                successBlock:( void(^)(UIImage *blurredImage) )successBlock
+                  errorBlock:( void(^)(NSNumber *errorCode) )errorBlock;
 {
     if( !_imageToProcess )
         [NSException raise: NSInvalidArgumentException format: @"%s must not be nil", EVAL_AND_STRINGIFY(_imageToProcess)];
@@ -328,6 +360,9 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
                 if( [weakSelf.delegate respondsToSelector: @selector( onALDBlurImageProcessor:blurProcessingErrorCode: )] )
                     [weakSelf.delegate onALDBlurImageProcessor: weakSelf blurProcessingErrorCode: errorCode ];
                 
+                if( errorBlock )
+                    errorBlock(errorCode);
+                
                 [[NSNotificationCenter defaultCenter] postNotificationName: ALDBlurImageProcessorImageProcessingErrorNotification
                                                                     object: weakSelf
                                                                   userInfo: @{ ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeKey: errorCode }];
@@ -337,6 +372,9 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
             {
                 if( [weakSelf.delegate respondsToSelector: @selector( onALDBlurImageProcessor:newBlurrredImage: )] )
                     [weakSelf.delegate onALDBlurImageProcessor: weakSelf newBlurrredImage: blurredImage];
+                
+                if( successBlock )
+                    successBlock(blurredImage);
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName: ALDBlurImageProcessorImageReadyNotification
                                                                     object: weakSelf

@@ -115,7 +115,9 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *  @see asyncBlurWithRadius:andIterations:
  *  @see asyncBlurWithRadius:andIterations:cancelingLastOperation:
  */
--( UIImage * )syncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations errorCode:( NSNumber ** )errorCode;
+-( UIImage * )syncBlurWithRadius:( uint32_t )radius
+                      iterations:( uint8_t )iterations
+                       errorCode:( NSNumber ** )errorCode;
 
 /**
  *  This is the same as calling asyncBlurWithRadius:andIterations:cancelingLastOperation: with
@@ -136,7 +138,38 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *  @see asyncBlurWithRadius:andIterations:cancelingLastOperation:
  *  @see cancelAsyncBlurOperations
  */
--( void )asyncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations;
+-( void )asyncBlurWithRadius:( uint32_t )radius
+                  iterations:( uint8_t )iterations;
+
+/**
+ *  This is the same as calling asyncBlurWithRadius:andIterations:cancelingLastOperation: with
+ *  cancelingLastOperation equal to NO.
+ *
+ *  @param radius             The radius of the blur, specifying how many pixels will be considered when generating the output pixel
+ *                            value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
+ *                            by 1. If radius is equal to zero, no blur will happen and the original image will be passed as the result.
+ *
+ *  @param iterations         The number of times radius will be applied to the image. The higher iterations is, the slower
+ *                            the output will be generated. Varying the number of iterations, combined with a static value of
+ *                            radius, typically create a smoother blurred image than just increasing the radius value. If iterations
+ *                            is equal to zero, no blur will happen and the original image will be passed as the result.
+ *
+ *  @param successBlock        The callback block called after blur success. It contains the blurred image processed. It will never
+ *                             be called simultaneously with errorBlock.
+ *
+ *  @param errorBlock          The callback block called after blur error. It contains an error code related to the issue happened.
+ *                             It will never be called simultaneously with successBlock.
+ *
+ *  @throws NSInvalidArgumentException if imageToProcess is nil
+ *
+ *  @see syncBlurWithRadius:andIterations:
+ *  @see asyncBlurWithRadius:andIterations:cancelingLastOperation:
+ *  @see cancelAsyncBlurOperations
+ */
+-( void )asyncBlurWithRadius:( uint32_t )radius
+                  iterations:( uint8_t )iterations
+                successBlock:( void(^)(UIImage *blurredImage) )successBlock
+                  errorBlock:( void(^)(NSNumber *errorCode) )errorBlock;
 
 /**
  *  Queues an asynchronous blur operation, targeting imageToProcess, on this object operation queue. When the new 
@@ -162,7 +195,46 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *  @see asyncBlurWithRadius:andIterations:
  *  @see cancelAsyncBlurOperations
  */
--( void )asyncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations cancelingLastOperation:( BOOL )cancelLastOperation;
+-( void )asyncBlurWithRadius:( uint32_t )radius
+                  iterations:( uint8_t )iterations
+      cancelingLastOperation:( BOOL )cancelLastOperation;
+
+/**
+ *  Queues an asynchronous blur operation, targeting imageToProcess, on this object operation queue. When the new
+ *  blurred image is ready, a success block is called containing the reference to the image. Besides that, calls the delegate and 
+ *  fires the respective notification on the main thread.
+ *
+ *  @param radius              The radius of the blur, specifying how many pixels will be considered when generating the output pixel
+ *                             value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
+ *                             by 1. If radius is equal to zero, no blur will happen and the original image will be passed as the result.
+ *
+ *  @param iterations          The number of times radius will be applied to the image. The higher iterations is, the slower
+ *                             the output will be generated. Varying the number of iterations, combined with a static value of
+ *                             radius, typically create a smoother blurred image than just increasing the radius value. If iterations
+ *                             is equal to zero, no blur will happen and the original image will be passed as the result.
+ *
+ *  @param cancelLastOperation YES if the last queued asynchronous blur operation should be canceled. NO otherwise. If there is
+ *                             no asynchronous blur operation queued or all of them have already been processed, cancelLastOperation
+ *                             is ignored. This parameter is useful when there's a need to opt between generating all blur operations
+ *                             ouputs or just having the last blur operation output as fast as possible.
+ *
+ *  @param successBlock        The callback block called after blur success. It contains the blurred image processed. It will never
+ *                             be called simultaneously with errorBlock.
+ *
+ *  @param errorBlock          The callback block called after blur error. It contains an error code related to the issue happened.
+ *                             It will never be called simultaneously with successBlock.
+ *
+ *  @throws NSInvalidArgumentException if imageToProcess is nil
+ *
+ *  @see syncBlurWithRadius:andIterations:
+ *  @see asyncBlurWithRadius:andIterations:
+ *  @see cancelAsyncBlurOperations
+ */
+-( void )asyncBlurWithRadius:( uint32_t )radius
+                  iterations:( uint8_t )iterations
+      cancelingLastOperation:( BOOL )cancelLastOperation
+                successBlock:( void(^)(UIImage *blurredImage) )successBlock
+                  errorBlock:( void(^)(NSNumber *errorCode) )errorBlock;
 
 /**
  *  Cancels all asynchronous blur operations queued by previous calls to asyncBlurWithRadius:andIterations:
