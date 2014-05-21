@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		124FC2D8192D1B8600CD13FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124FC2D7192D1B8600CD13FC /* Foundation.framework */; };
+		124FC2DD192D1B8600CD13FC /* ALDBlurImageProcessor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124FC2DC192D1B8600CD13FC /* ALDBlurImageProcessor.h */; };
+		124FC2DF192D1B8600CD13FC /* ALDBlurImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 124FC2DE192D1B8600CD13FC /* ALDBlurImageProcessor.m */; };
+		124FC2E6192D1B8600CD13FC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124FC2E5192D1B8600CD13FC /* XCTest.framework */; };
+		124FC2E7192D1B8600CD13FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124FC2D7192D1B8600CD13FC /* Foundation.framework */; };
+		124FC2EC192D1B8600CD13FC /* libALDBlurImageProcessor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 124FC2D4192D1B8600CD13FC /* libALDBlurImageProcessor.a */; };
+		124FC2F2192D1B8600CD13FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124FC2F0192D1B8600CD13FC /* InfoPlist.strings */; };
+		124FC2F4192D1B8600CD13FC /* ALDBlurImageProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 124FC2F3192D1B8600CD13FC /* ALDBlurImageProcessorTests.m */; };
+		124FC2FE192D1CD400CD13FC /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124FC2FD192D1CD400CD13FC /* Accelerate.framework */; };
+		124FC300192D1CFA00CD13FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124FC2FF192D1CFA00CD13FC /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		124FC2EA192D1B8600CD13FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 124FC2CC192D1B8600CD13FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 124FC2D3192D1B8600CD13FC;
+			remoteInfo = ALDBlurImageProcessor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		124FC2D2192D1B8600CD13FC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				124FC2DD192D1B8600CD13FC /* ALDBlurImageProcessor.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		124FC2D4192D1B8600CD13FC /* libALDBlurImageProcessor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libALDBlurImageProcessor.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		124FC2D7192D1B8600CD13FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		124FC2DB192D1B8600CD13FC /* ALDBlurImageProcessor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ALDBlurImageProcessor-Prefix.pch"; sourceTree = "<group>"; };
+		124FC2DC192D1B8600CD13FC /* ALDBlurImageProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALDBlurImageProcessor.h; sourceTree = "<group>"; };
+		124FC2DE192D1B8600CD13FC /* ALDBlurImageProcessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALDBlurImageProcessor.m; sourceTree = "<group>"; };
+		124FC2E4192D1B8600CD13FC /* ALDBlurImageProcessorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALDBlurImageProcessorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		124FC2E5192D1B8600CD13FC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		124FC2EF192D1B8600CD13FC /* ALDBlurImageProcessorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ALDBlurImageProcessorTests-Info.plist"; sourceTree = "<group>"; };
+		124FC2F1192D1B8600CD13FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		124FC2F3192D1B8600CD13FC /* ALDBlurImageProcessorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALDBlurImageProcessorTests.m; sourceTree = "<group>"; };
+		124FC2FD192D1CD400CD13FC /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		124FC2FF192D1CFA00CD13FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		124FC2D1192D1B8600CD13FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124FC2FE192D1CD400CD13FC /* Accelerate.framework in Frameworks */,
+				124FC2D8192D1B8600CD13FC /* Foundation.framework in Frameworks */,
+				124FC300192D1CFA00CD13FC /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		124FC2E1192D1B8600CD13FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124FC2EC192D1B8600CD13FC /* libALDBlurImageProcessor.a in Frameworks */,
+				124FC2E7192D1B8600CD13FC /* Foundation.framework in Frameworks */,
+				124FC2E6192D1B8600CD13FC /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		124FC2CB192D1B8600CD13FC = {
+			isa = PBXGroup;
+			children = (
+				124FC2D9192D1B8600CD13FC /* ALDBlurImageProcessor */,
+				124FC2ED192D1B8600CD13FC /* ALDBlurImageProcessorTests */,
+				124FC2D6192D1B8600CD13FC /* Frameworks */,
+				124FC2D5192D1B8600CD13FC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		124FC2D5192D1B8600CD13FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				124FC2D4192D1B8600CD13FC /* libALDBlurImageProcessor.a */,
+				124FC2E4192D1B8600CD13FC /* ALDBlurImageProcessorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		124FC2D6192D1B8600CD13FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				124FC2FD192D1CD400CD13FC /* Accelerate.framework */,
+				124FC2D7192D1B8600CD13FC /* Foundation.framework */,
+				124FC2FF192D1CFA00CD13FC /* UIKit.framework */,
+				124FC2E5192D1B8600CD13FC /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		124FC2D9192D1B8600CD13FC /* ALDBlurImageProcessor */ = {
+			isa = PBXGroup;
+			children = (
+				124FC2DC192D1B8600CD13FC /* ALDBlurImageProcessor.h */,
+				124FC2DE192D1B8600CD13FC /* ALDBlurImageProcessor.m */,
+				124FC2DA192D1B8600CD13FC /* Supporting Files */,
+			);
+			path = ALDBlurImageProcessor;
+			sourceTree = "<group>";
+		};
+		124FC2DA192D1B8600CD13FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				124FC2DB192D1B8600CD13FC /* ALDBlurImageProcessor-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		124FC2ED192D1B8600CD13FC /* ALDBlurImageProcessorTests */ = {
+			isa = PBXGroup;
+			children = (
+				124FC2F3192D1B8600CD13FC /* ALDBlurImageProcessorTests.m */,
+				124FC2EE192D1B8600CD13FC /* Supporting Files */,
+			);
+			path = ALDBlurImageProcessorTests;
+			sourceTree = "<group>";
+		};
+		124FC2EE192D1B8600CD13FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				124FC2EF192D1B8600CD13FC /* ALDBlurImageProcessorTests-Info.plist */,
+				124FC2F0192D1B8600CD13FC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		124FC2D3192D1B8600CD13FC /* ALDBlurImageProcessor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 124FC2F7192D1B8600CD13FC /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessor" */;
+			buildPhases = (
+				124FC2D0192D1B8600CD13FC /* Sources */,
+				124FC2D1192D1B8600CD13FC /* Frameworks */,
+				124FC2D2192D1B8600CD13FC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ALDBlurImageProcessor;
+			productName = ALDBlurImageProcessor;
+			productReference = 124FC2D4192D1B8600CD13FC /* libALDBlurImageProcessor.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		124FC2E3192D1B8600CD13FC /* ALDBlurImageProcessorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 124FC2FA192D1B8600CD13FC /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessorTests" */;
+			buildPhases = (
+				124FC2E0192D1B8600CD13FC /* Sources */,
+				124FC2E1192D1B8600CD13FC /* Frameworks */,
+				124FC2E2192D1B8600CD13FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				124FC2EB192D1B8600CD13FC /* PBXTargetDependency */,
+			);
+			name = ALDBlurImageProcessorTests;
+			productName = ALDBlurImageProcessorTests;
+			productReference = 124FC2E4192D1B8600CD13FC /* ALDBlurImageProcessorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		124FC2CC192D1B8600CD13FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Daniel L. Alves";
+			};
+			buildConfigurationList = 124FC2CF192D1B8600CD13FC /* Build configuration list for PBXProject "ALDBlurImageProcessor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 124FC2CB192D1B8600CD13FC;
+			productRefGroup = 124FC2D5192D1B8600CD13FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				124FC2D3192D1B8600CD13FC /* ALDBlurImageProcessor */,
+				124FC2E3192D1B8600CD13FC /* ALDBlurImageProcessorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		124FC2E2192D1B8600CD13FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124FC2F2192D1B8600CD13FC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		124FC2D0192D1B8600CD13FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124FC2DF192D1B8600CD13FC /* ALDBlurImageProcessor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		124FC2E0192D1B8600CD13FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124FC2F4192D1B8600CD13FC /* ALDBlurImageProcessorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		124FC2EB192D1B8600CD13FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 124FC2D3192D1B8600CD13FC /* ALDBlurImageProcessor */;
+			targetProxy = 124FC2EA192D1B8600CD13FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		124FC2F0192D1B8600CD13FC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				124FC2F1192D1B8600CD13FC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		124FC2F5192D1B8600CD13FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		124FC2F6192D1B8600CD13FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		124FC2F8192D1B8600CD13FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ALDBlurImageProcessor.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ALDBlurImageProcessor/ALDBlurImageProcessor-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		124FC2F9192D1B8600CD13FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ALDBlurImageProcessor.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ALDBlurImageProcessor/ALDBlurImageProcessor-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		124FC2FB192D1B8600CD13FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ALDBlurImageProcessor/ALDBlurImageProcessor-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ALDBlurImageProcessorTests/ALDBlurImageProcessorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		124FC2FC192D1B8600CD13FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ALDBlurImageProcessor/ALDBlurImageProcessor-Prefix.pch";
+				INFOPLIST_FILE = "ALDBlurImageProcessorTests/ALDBlurImageProcessorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		124FC2CF192D1B8600CD13FC /* Build configuration list for PBXProject "ALDBlurImageProcessor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				124FC2F5192D1B8600CD13FC /* Debug */,
+				124FC2F6192D1B8600CD13FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		124FC2F7192D1B8600CD13FC /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				124FC2F8192D1B8600CD13FC /* Debug */,
+				124FC2F9192D1B8600CD13FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		124FC2FA192D1B8600CD13FC /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				124FC2FB192D1B8600CD13FC /* Debug */,
+				124FC2FC192D1B8600CD13FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 124FC2CC192D1B8600CD13FC /* Project object */;
+}

@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Daniel L. Alves. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 /**

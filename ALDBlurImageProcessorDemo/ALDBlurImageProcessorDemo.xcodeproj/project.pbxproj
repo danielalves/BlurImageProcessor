@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		123FB32E1925637B0065ABF7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 123FB32D1925637B0065ABF7 /* Accelerate.framework */; };
 		1240508C1925349700B42AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1240508B1925349700B42AFA /* Foundation.framework */; };
-		1240508E1925349700B42AFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1240508D1925349700B42AFA /* CoreGraphics.framework */; };
 		124050901925349700B42AFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1240508F1925349700B42AFA /* UIKit.framework */; };
 		124050961925349700B42AFA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124050941925349700B42AFA /* InfoPlist.strings */; };
 		124050981925349700B42AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 124050971925349700B42AFA /* main.m */; };
@@ -17,29 +15,12 @@
 		1240509F1925349700B42AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1240509D1925349700B42AFA /* Main.storyboard */; };
 		124050A21925349700B42AFA /* ALDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 124050A11925349700B42AFA /* ALDViewController.m */; };
 		124050A41925349700B42AFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124050A31925349700B42AFA /* Images.xcassets */; };
-		124050AB1925349700B42AFA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124050AA1925349700B42AFA /* XCTest.framework */; };
-		124050AC1925349700B42AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1240508B1925349700B42AFA /* Foundation.framework */; };
-		124050AD1925349700B42AFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1240508F1925349700B42AFA /* UIKit.framework */; };
-		124050B51925349700B42AFA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124050B31925349700B42AFA /* InfoPlist.strings */; };
-		124050B71925349700B42AFA /* ALDBlurImageProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 124050B61925349700B42AFA /* ALDBlurImageProcessorTests.m */; };
 		4390618F1646452787328752 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28794DA447364087A47CB42F /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		124050AE1925349700B42AFA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 124050801925349700B42AFA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 124050871925349700B42AFA;
-			remoteInfo = TestBlur;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		123FB32D1925637B0065ABF7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		124050881925349700B42AFA /* ALDBlurImageProcessorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALDBlurImageProcessorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1240508B1925349700B42AFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1240508D1925349700B42AFA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1240508F1925349700B42AFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		124050931925349700B42AFA /* ALDBlurImageProcessorDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ALDBlurImageProcessorDemo-Info.plist"; sourceTree = "<group>"; };
 		124050951925349700B42AFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -51,11 +32,6 @@
 		124050A01925349700B42AFA /* ALDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALDViewController.h; sourceTree = "<group>"; };
 		124050A11925349700B42AFA /* ALDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALDViewController.m; sourceTree = "<group>"; };
 		124050A31925349700B42AFA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		124050A91925349700B42AFA /* ALDBlurImageProcessorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALDBlurImageProcessorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		124050AA1925349700B42AFA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		124050B21925349700B42AFA /* ALDBlurImageProcessorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ALDBlurImageProcessorTests-Info.plist"; sourceTree = "<group>"; };
-		124050B41925349700B42AFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		124050B61925349700B42AFA /* ALDBlurImageProcessorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALDBlurImageProcessorTests.m; sourceTree = "<group>"; };
 		28794DA447364087A47CB42F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B254F9DFF5C8436498BF8920 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,21 +41,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				123FB32E1925637B0065ABF7 /* Accelerate.framework in Frameworks */,
-				1240508E1925349700B42AFA /* CoreGraphics.framework in Frameworks */,
 				1240508C1925349700B42AFA /* Foundation.framework in Frameworks */,
 				124050901925349700B42AFA /* UIKit.framework in Frameworks */,
 				4390618F1646452787328752 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		124050A61925349700B42AFA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				124050AB1925349700B42AFA /* XCTest.framework in Frameworks */,
-				124050AD1925349700B42AFA /* UIKit.framework in Frameworks */,
-				124050AC1925349700B42AFA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				124050911925349700B42AFA /* ALDBlurImageProcessorDemo */,
-				124050B01925349700B42AFA /* ALDBlurImageProcessorTests */,
 				1240508A1925349700B42AFA /* Frameworks */,
 				124050891925349700B42AFA /* Products */,
 				B254F9DFF5C8436498BF8920 /* Pods.xcconfig */,
@@ -101,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				124050881925349700B42AFA /* ALDBlurImageProcessorDemo.app */,
-				124050A91925349700B42AFA /* ALDBlurImageProcessorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,11 +71,8 @@
 		1240508A1925349700B42AFA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				123FB32D1925637B0065ABF7 /* Accelerate.framework */,
 				1240508B1925349700B42AFA /* Foundation.framework */,
-				1240508D1925349700B42AFA /* CoreGraphics.framework */,
 				1240508F1925349700B42AFA /* UIKit.framework */,
-				124050AA1925349700B42AFA /* XCTest.framework */,
 				28794DA447364087A47CB42F /* libPods.a */,
 			);
 			name = Frameworks;
@@ -144,24 +103,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		124050B01925349700B42AFA /* ALDBlurImageProcessorTests */ = {
-			isa = PBXGroup;
-			children = (
-				124050B61925349700B42AFA /* ALDBlurImageProcessorTests.m */,
-				124050B11925349700B42AFA /* Supporting Files */,
-			);
-			path = ALDBlurImageProcessorTests;
-			sourceTree = "<group>";
-		};
-		124050B11925349700B42AFA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				124050B21925349700B42AFA /* ALDBlurImageProcessorTests-Info.plist */,
-				124050B31925349700B42AFA /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -184,24 +125,6 @@
 			productReference = 124050881925349700B42AFA /* ALDBlurImageProcessorDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		124050A81925349700B42AFA /* ALDBlurImageProcessorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 124050BD1925349700B42AFA /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessorTests" */;
-			buildPhases = (
-				124050A51925349700B42AFA /* Sources */,
-				124050A61925349700B42AFA /* Frameworks */,
-				124050A71925349700B42AFA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				124050AF1925349700B42AFA /* PBXTargetDependency */,
-			);
-			name = ALDBlurImageProcessorTests;
-			productName = TestBlurTests;
-			productReference = 124050A91925349700B42AFA /* ALDBlurImageProcessorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -211,11 +134,6 @@
 				CLASSPREFIX = ALD;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Daniel L. Alves";
-				TargetAttributes = {
-					124050A81925349700B42AFA = {
-						TestTargetID = 124050871925349700B42AFA;
-					};
-				};
 			};
 			buildConfigurationList = 124050831925349700B42AFA /* Build configuration list for PBXProject "ALDBlurImageProcessorDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -231,7 +149,6 @@
 			projectRoot = "";
 			targets = (
 				124050871925349700B42AFA /* ALDBlurImageProcessorDemo */,
-				124050A81925349700B42AFA /* ALDBlurImageProcessorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -244,14 +161,6 @@
 				124050A41925349700B42AFA /* Images.xcassets in Resources */,
 				124050961925349700B42AFA /* InfoPlist.strings in Resources */,
 				1240509F1925349700B42AFA /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		124050A71925349700B42AFA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				124050B51925349700B42AFA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,23 +210,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		124050A51925349700B42AFA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				124050B71925349700B42AFA /* ALDBlurImageProcessorTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		124050AF1925349700B42AFA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 124050871925349700B42AFA /* ALDBlurImageProcessorDemo */;
-			targetProxy = 124050AE1925349700B42AFA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		124050941925349700B42AFA /* InfoPlist.strings */ = {
@@ -334,14 +227,6 @@
 				1240509E1925349700B42AFA /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		124050B31925349700B42AFA /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				124050B41925349700B42AFA /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -447,46 +332,6 @@
 			};
 			name = Release;
 		};
-		124050BE1925349700B42AFA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ALDBlurImageProcessorDemo.app/ALDBlurImageProcessorDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ALDBlurImageProcessorDemo/ALDBlurImageProcessorDemo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ALDBlurImageProcessorTests/ALDBlurImageProcessorTests-Info.plist";
-				PRODUCT_NAME = ALDBlurImageProcessorTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		124050BF1925349700B42AFA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ALDBlurImageProcessorDemo.app/ALDBlurImageProcessorDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ALDBlurImageProcessorDemo/ALDBlurImageProcessorDemo-Prefix.pch";
-				INFOPLIST_FILE = "ALDBlurImageProcessorTests/ALDBlurImageProcessorTests-Info.plist";
-				PRODUCT_NAME = ALDBlurImageProcessorTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -504,15 +349,6 @@
 			buildConfigurations = (
 				124050BB1925349700B42AFA /* Debug */,
 				124050BC1925349700B42AFA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		124050BD1925349700B42AFA /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				124050BE1925349700B42AFA /* Debug */,
-				124050BF1925349700B42AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
