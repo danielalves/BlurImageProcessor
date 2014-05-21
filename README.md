@@ -7,7 +7,7 @@
     <img src="./blur-image-processor.gif" width="320" height="568"/>
 </p>
 
-BlurImageProcessor offers a very easy and practical way to generate blurred images in real time. After an image
+**BlurImageProcessor** offers a very easy and practical way to generate blurred images in real time. After an image
 is specified to be targeted by it, every new blur operation will create a new allocated image. Varying the value of 
 radiuses and iterations, its possible to create many different results and even animations.
 
@@ -26,14 +26,16 @@ First of all, you need to instantiate a processor with a **strong** reference to
 @interface MyViewController ()
 {
     ALDBlurImageProcessor *blurImageProcessor;
+    UIImageView *blurTargetImageView;
 }
 @end
 
 @implementation MyViewController
 -( void )viewDidLoad
 {
-    [super viewDidLoad];
+    ...
     blurImageProcessor = [[ALDBlurImageProcessor alloc] initWithImage: blurTargetImageView.image];
+    ...
 }
 @end
 ```
@@ -50,6 +52,7 @@ Declare you are implementing `ALDBlurImageProcessorDelegate`:
 @interface MyViewController () <ALDBlurImageProcessorDelegate>
 {
     ALDBlurImageProcessor *blurImageProcessor;
+    UIImageView *blurTargetImageView;
 }
 @end
 ```
@@ -73,9 +76,9 @@ And finally implement its methods:
     blurTargetImageView.image = image;
 }
 
--( void )onALDBlurImageProcessor:( ALDBlurImageProcessor * )blurImageProcessor blurProcessingError:( NSNumber * )error
+-( void )onALDBlurImageProcessor:( ALDBlurImageProcessor * )blurImageProcessor blurProcessingErrorCode:( NSNumber * )errorCode
 {
-    NSLog(@"%@", error.localizedDescription);
+    NSLog( @"%@", errorCode );
 }
 ```
 
@@ -111,8 +114,8 @@ And implement the methods to handle the blurred image:
 
 -( void )onBlurImageProcessorError:( NSNotification * )notification
 {
-    NSError *error = notification.userInfo[ ALDBlurImageProcessorImageProcessingErrorNotificationErrorKey ];
-    NSLog(@"%@", error.localizedDescription);
+    NSNumber *errorCode = notification.userInfo[ ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeKey ];
+    NSLog( @"%@", errorCode );
 }
 ```
 
