@@ -40,9 +40,27 @@ First of all, you need to instantiate a processor with a **strong** reference to
 @end
 ```
 
-Then you choose how you want to handle the generated images: via its **delegate** or via **notifications**. 
+Then you choose how you want to handle the generated images: via **blocks**, via its **delegate** or via **notifications**. 
 
-Let's see how to implement it using `ALDBlurImageProcessorDelegate`:
+### Blocks
+
+```objc
+-( void )viewDidLoad
+{
+    ...
+    [blurImageProcessor asyncBlurWithRadius: 5 
+                                 iterations: 7
+                               successBlock: ^(UIImage *)blurredImage {
+                                   blurTargetImageView.image = blurredImage;
+                               }
+                               errorBlock: ^(NSNumber *errorCode) {
+                                   NSLog(@"Error code: %d", [errorCode intValue]);
+                               }];
+    ...
+}
+```
+
+That's all!
 
 ### ALDBlurImageProcessorDelegate
 
@@ -64,6 +82,7 @@ Then set `blurImageProcessor`'s delegate:
 {
     ...
     blurImageProcessor.delegate = self;
+    [blurImageProcessor asyncBlurWithRadius: 5 iterations: 7];
     ...
 }
 ```
@@ -99,6 +118,8 @@ Using **notifications**, just observe the notifications you want:
                                              selector: @selector( onBlurImageProcessorError: )
                                                  name: ALDBlurImageProcessorImageProcessingErrorNotification
                                                object: nil];
+                                               
+    [blurImageProcessor asyncBlurWithRadius: 5 iterations: 7];
     ...
 }
 ```
