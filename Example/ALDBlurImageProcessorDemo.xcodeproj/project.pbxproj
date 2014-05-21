@@ -462,7 +462,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "ALDBlurImageProcessorDemoTests/ALDBlurImageProcessorDemoTests-Info.plist";
+				INFOPLIST_FILE = "ALDBlurImageProcessorTests/ALDBlurImageProcessorTests-Info.plist";
 				PRODUCT_NAME = ALDBlurImageProcessorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -480,7 +480,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ALDBlurImageProcessorDemo/ALDBlurImageProcessorDemo-Prefix.pch";
-				INFOPLIST_FILE = "ALDBlurImageProcessorDemoTests/ALDBlurImageProcessorDemoTests-Info.plist";
+				INFOPLIST_FILE = "ALDBlurImageProcessorTests/ALDBlurImageProcessorTests-Info.plist";
 				PRODUCT_NAME = ALDBlurImageProcessorTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
