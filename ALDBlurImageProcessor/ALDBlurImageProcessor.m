@@ -189,98 +189,92 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
 -( UIImage * )blurImage:( UIImage * )originalImage
              withRadius:( uint32_t )radius
              iterations:( uint8_t )iterations
-              errorCode:( NSNumber ** )errorCode;
+              errorCode:( out NSNumber ** )errorCode;
 {
-    UIImage * cachedImage = [ALDBlurImageProcessor cachedBlurredImageForImage: _imageToProcess radius: radius iterations: iterations];
-    if( cachedImage )
-        return cachedImage;
-    
-    UIImage *finalImage = nil;
-    
     @synchronized( self )
     {
-        if( _imageToProcess )
+        UIImage * cachedImage = [ALDBlurImageProcessor cachedBlurredImageForImage: _imageToProcess radius: radius iterations: iterations];
+        if( cachedImage )
+            return cachedImage;
+        
+        if( !_imageToProcess )
+            return nil;
+        
+        vImage_Buffer finalImageBuffer;
+        if( iterations == 0 || radius == 0 )
+            return _imageToProcess;
+
+        // Maybe we have freed memory on a memory warning notification, so we need to check it
+        if( !tempImageBuffer.data )
+            tempImageBuffer.data = malloc( tempImageBuffer.rowBytes * tempImageBuffer.height );
+        
+        // If we couldn't allocate memory, we'll be sorry, but we'll return the last image we generated
+        // If we never generated a blurred image, that will be the original image
+        if( tempImageBuffer.data )
         {
-            vImage_Buffer finalImageBuffer;
-            if( iterations == 0 || radius == 0 )
+            // Radius must be an odd integer, or we'll get a kvImageInvalidKernelSize error. See
+            // vImageBoxConvolve_ARGB8888 documentation for a better discussion
+            uint32_t finalRadius = ( uint32_t )( radius * originalImage.scale );
+            if(( finalRadius & 1 ) == 0 )
+                ++finalRadius;
+            
+            // We must never lose the original image, so we can generated any number of blurred versions
+            // out of it. This is why we copy its data to tempImageBuffer before proceeding
+            memcpy( tempImageBuffer.data, originalImageBuffer.data, originalImageBuffer.rowBytes * originalImageBuffer.height );
+
+            // The reason of the loop below is that many convolve iterations generate a better blurred image
+            // than applying a greater convolve radius
+            for( uint16_t i = 0 ; i < iterations ; ++i )
             {
-                finalImageBuffer = originalImageBuffer;
-            }
-            else
-            {
-                // Maybe we have freed memory on a memory warning notification, so we need to check it
-                if( !tempImageBuffer.data )
-                    tempImageBuffer.data = malloc( tempImageBuffer.rowBytes * tempImageBuffer.height );
-                
-                // If we couldn't allocate memory, we'll be sorry, but we'll return the last image we generated
-                // If we never generated a blurred image, that will be the original image
-                if( tempImageBuffer.data )
+                vImage_Error error = vImageBoxConvolve_ARGB8888( &tempImageBuffer, &processedImageBuffer, NULL, 0, 0, finalRadius, finalRadius, NULL, kvImageEdgeExtend );
+                if( error != kvImageNoError )
                 {
-                    // Radius must be an odd integer, or we'll get a kvImageInvalidKernelSize error. See
-                    // vImageBoxConvolve_ARGB8888 documentation for a better discussion
-                    uint32_t finalRadius = ( uint32_t )( radius * originalImage.scale );
-                    if(( finalRadius & 1 ) == 0 )
-                        ++finalRadius;
+                    if( errorCode )
+                        *errorCode = @(error);
                     
-                    // We must never lose the original image, so we can generated any number of blurred versions
-                    // out of it. This is why we copy its data to tempImageBuffer before proceeding
-                    memcpy( tempImageBuffer.data, originalImageBuffer.data, originalImageBuffer.rowBytes * originalImageBuffer.height );
-
-                    // The reason of the loop below is that many convolve iterations generate a better blurred image
-                    // than applying a greater convolve radius
-                    for( uint16_t i = 0 ; i < iterations ; ++i )
-                    {
-                        vImage_Error error = vImageBoxConvolve_ARGB8888( &tempImageBuffer, &processedImageBuffer, NULL, 0, 0, finalRadius, finalRadius, NULL, kvImageEdgeExtend );
-                        if( error != kvImageNoError )
-                        {
-                            if( errorCode )
-                                *errorCode = @(error);
-                            
-                            break;
-                        }
-
-                        void *temp = tempImageBuffer.data;
-                        tempImageBuffer.data = processedImageBuffer.data;
-                        processedImageBuffer.data = temp;
-                    }
-                    
-                    // The last processed image is being hold by tempImageBuffer. So let's fix it
-                    // by swaping buffers again
-                    void *temp = tempImageBuffer.data;
-                    tempImageBuffer.data = processedImageBuffer.data;
-                    processedImageBuffer.data = temp;
+                    break;
                 }
-                
-                finalImageBuffer = processedImageBuffer;
+
+                void *temp = tempImageBuffer.data;
+                tempImageBuffer.data = processedImageBuffer.data;
+                processedImageBuffer.data = temp;
             }
             
-            CGContextRef finalImageContext = CGBitmapContextCreate( finalImageBuffer.data,
-                                                                    finalImageBuffer.width,
-                                                                    finalImageBuffer.height,
-                                                                    8,
-                                                                    finalImageBuffer.rowBytes,
-                                                                    CGImageGetColorSpace( originalImage.CGImage ),
-                                                                    CGImageGetBitmapInfo( originalImage.CGImage ));
-            
-            // TODO : Here we could call a delegate with the context, so we could do a post process. Or
-            // we could receive a block to do the same
-            // ...
-            
-            CGImageRef finalImageRef = CGBitmapContextCreateImage( finalImageContext );
-            finalImage = [UIImage imageWithCGImage: finalImageRef scale: originalImage.scale orientation: originalImage.imageOrientation];
-            CGImageRelease( finalImageRef );
-            CGContextRelease( finalImageContext );
-            
-            [ALDBlurImageProcessor cacheBlurredImage: finalImage forImage: _imageToProcess radius: radius iterations: iterations];
+            // The last processed image is being hold by tempImageBuffer. So let's fix it
+            // by swaping buffers again
+            void *temp = tempImageBuffer.data;
+            tempImageBuffer.data = processedImageBuffer.data;
+            processedImageBuffer.data = temp;
         }
+        
+        finalImageBuffer = processedImageBuffer;
+        
+        CGContextRef finalImageContext = CGBitmapContextCreate( finalImageBuffer.data,
+                                                                finalImageBuffer.width,
+                                                                finalImageBuffer.height,
+                                                                8,
+                                                                finalImageBuffer.rowBytes,
+                                                                CGImageGetColorSpace( originalImage.CGImage ),
+                                                                CGImageGetBitmapInfo( originalImage.CGImage ));
+        
+        // TODO : Here we could call a delegate with the context, so we could do a post process. Or
+        // we could receive a block to do the same
+        // ...
+        
+        CGImageRef finalImageRef = CGBitmapContextCreateImage( finalImageContext );
+        UIImage *finalImage = [UIImage imageWithCGImage: finalImageRef scale: originalImage.scale orientation: originalImage.imageOrientation];
+        CGImageRelease( finalImageRef );
+        CGContextRelease( finalImageContext );
+        
+        [ALDBlurImageProcessor cacheBlurredImage: finalImage forImage: _imageToProcess radius: radius iterations: iterations];
+        
+        return finalImage;
     }
-    
-    return finalImage;
 }
 
 -( UIImage * )syncBlurWithRadius:( uint32_t )radius
                       iterations:( uint8_t )iterations
-                       errorCode:( NSNumber * __autoreleasing * )errorCode
+                       errorCode:( out NSNumber * __autoreleasing * )errorCode
 {
     if( !_imageToProcess )
         [NSException raise: NSInvalidArgumentException format: @"%s must not be nil", EVAL_AND_STRINGIFY(_imageToProcess)];
@@ -314,8 +308,8 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
 
 -( void )asyncBlurWithRadius:( uint32_t )radius
                   iterations:( uint8_t )iterations
-             successBlock:( void(^)(UIImage *blurredImage) )successBlock
-               errorBlock:( void(^)(NSNumber *errorCode) )errorBlock;
+             successBlock:( void(^)( UIImage *blurredImage ) )successBlock
+               errorBlock:( void(^)( NSNumber *errorCode ) )errorBlock;
 {
     [self asyncBlurWithRadius: radius
                    iterations: iterations
@@ -327,8 +321,8 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
 -( void )asyncBlurWithRadius:( uint32_t )radius
                   iterations:( uint8_t )iterations
       cancelingLastOperation:( BOOL )cancelLastOperation
-                successBlock:( void(^)(UIImage *blurredImage) )successBlock
-                  errorBlock:( void(^)(NSNumber *errorCode) )errorBlock;
+                successBlock:( void(^)( UIImage *blurredImage ) )successBlock
+                  errorBlock:( void(^)( NSNumber *errorCode ) )errorBlock;
 {
     if( !_imageToProcess )
         [NSException raise: NSInvalidArgumentException format: @"%s must not be nil", EVAL_AND_STRINGIFY(_imageToProcess)];
@@ -361,7 +355,7 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
                     [weakSelf.delegate onALDBlurImageProcessor: weakSelf blurProcessingErrorCode: errorCode ];
                 
                 if( errorBlock )
-                    errorBlock(errorCode);
+                    errorBlock( errorCode );
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName: ALDBlurImageProcessorImageProcessingErrorNotification
                                                                     object: weakSelf
@@ -374,7 +368,7 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
                     [weakSelf.delegate onALDBlurImageProcessor: weakSelf newBlurrredImage: blurredImage];
                 
                 if( successBlock )
-                    successBlock(blurredImage);
+                    successBlock( blurredImage );
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName: ALDBlurImageProcessorImageReadyNotification
                                                                     object: weakSelf
