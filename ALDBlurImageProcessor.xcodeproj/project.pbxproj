@@ -17,6 +17,7 @@
 		124FC2F4192D1B8600CD13FC /* ALDBlurImageProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 124FC2F3192D1B8600CD13FC /* ALDBlurImageProcessorTests.m */; };
 		124FC2FE192D1CD400CD13FC /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124FC2FD192D1CD400CD13FC /* Accelerate.framework */; };
 		124FC300192D1CFA00CD13FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124FC2FF192D1CFA00CD13FC /* UIKit.framework */; };
+		124FC301192D365400CD13FC /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124FC2FD192D1CD400CD13FC /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				124FC2EC192D1B8600CD13FC /* libALDBlurImageProcessor.a in Frameworks */,
+				124FC301192D365400CD13FC /* Accelerate.framework in Frameworks */,
 				124FC2E7192D1B8600CD13FC /* Foundation.framework in Frameworks */,
 				124FC2E6192D1B8600CD13FC /* XCTest.framework in Frameworks */,
 			);
