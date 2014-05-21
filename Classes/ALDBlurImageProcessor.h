@@ -96,7 +96,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
 -( instancetype )initWithImage:( UIImage * )image;
 
 /**
- *  Generated a new allocated blurred image synchronously. This method only calls the delegate/fires notifications in error cases.
+ *  Generated a new allocated blurred image synchronously. This method does not call the delegate or fires notifications.
  *
  *  @param radius             The radius of the blur, specifying how many pixels will be considered when generating the output pixel
  *                            value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
@@ -107,6 +107,8 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *                            radius, typically create a smoother blurred image than just increasing the radius value. If iterations
  *                            is equal to zero, no blur will happen and the original image will be passed as the result.
  *
+ *  @param errorCode          On output, a NSNumber object boxing a vImage_Error error code.
+ *
  *  @return A new allocated blurred image
  *
  *  @throws NSInvalidArgumentException if imageToProcess is nil
@@ -114,7 +116,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *  @see asyncBlurWithRadius:andIterations:
  *  @see asyncBlurWithRadius:andIterations:cancelingLastOperation:
  */
--( UIImage * )syncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations;
+-( UIImage * )syncBlurWithRadius:( uint32_t )radius iterations:( uint8_t )iterations errorCode:( NSNumber ** )errorCode;
 
 /**
  *  This is the same as calling asyncBlurWithRadius:andIterations:cancelingLastOperation: with
