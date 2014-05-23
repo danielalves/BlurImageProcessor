@@ -46,7 +46,6 @@
 /* Begin PBXFileReference section */
 		124FC2D4192D1B8600CD13FC /* libALDBlurImageProcessor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libALDBlurImageProcessor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		124FC2D7192D1B8600CD13FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		124FC2DB192D1B8600CD13FC /* ALDBlurImageProcessor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ALDBlurImageProcessor-Prefix.pch"; sourceTree = "<group>"; };
 		124FC2DC192D1B8600CD13FC /* ALDBlurImageProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALDBlurImageProcessor.h; sourceTree = "<group>"; };
 		124FC2DE192D1B8600CD13FC /* ALDBlurImageProcessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALDBlurImageProcessor.m; sourceTree = "<group>"; };
 		124FC2E4192D1B8600CD13FC /* ALDBlurImageProcessorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALDBlurImageProcessorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,17 +117,8 @@
 			children = (
 				124FC2DC192D1B8600CD13FC /* ALDBlurImageProcessor.h */,
 				124FC2DE192D1B8600CD13FC /* ALDBlurImageProcessor.m */,
-				124FC2DA192D1B8600CD13FC /* Supporting Files */,
 			);
 			path = ALDBlurImageProcessor;
-			sourceTree = "<group>";
-		};
-		124FC2DA192D1B8600CD13FC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				124FC2DB192D1B8600CD13FC /* ALDBlurImageProcessor-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		124FC2ED192D1B8600CD13FC /* ALDBlurImageProcessorTests */ = {
@@ -337,7 +327,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/ALDBlurImageProcessor.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ALDBlurImageProcessor/ALDBlurImageProcessor-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -349,7 +339,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/ALDBlurImageProcessor.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ALDBlurImageProcessor/ALDBlurImageProcessor-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -365,7 +355,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ALDBlurImageProcessor/ALDBlurImageProcessor-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -385,7 +375,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ALDBlurImageProcessor/ALDBlurImageProcessor-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ALDBlurImageProcessorTests/ALDBlurImageProcessorTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
