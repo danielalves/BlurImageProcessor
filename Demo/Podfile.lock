@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BlurImageProcessor: 6dcc9ff0a0cd86689f8fb5ef7009eeb44c8ba3b9
+  BlurImageProcessor: 0afc6c6f0bb7d609ead9d29dec99e6ea68c57e0d
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
