@@ -1,0 +1,4 @@
+
+target :ALDBlurImageProcessorTests do
+    pod 'Redefine'
+end

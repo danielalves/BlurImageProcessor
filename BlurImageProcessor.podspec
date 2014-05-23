@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.platform         = :ios, '6.0'
   s.ios.deployment_target = '6.0'
   s.requires_arc     = true
-  s.source_files     = 'ALDBlurImageProcessor'
+  s.source_files     = 'BlurImageProcessor/ALDBlurImageProcessor'
   s.frameworks       = 'Accelerate'
 end

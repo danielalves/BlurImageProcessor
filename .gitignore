@@ -25,4 +25,5 @@ DerivedData
 *.orig
 
 # CocoaPods
-ALDBlurImageProcessorDemo/Pods/
+BlurImageProcessor/Pods/
+Demo/Pods/

@@ -1,0 +1,10 @@
+PODS:
+  - Redefine (1.0.3)
+
+DEPENDENCIES:
+  - Redefine
+
+SPEC CHECKSUMS:
+  Redefine: a4b19e19ced123b9aedfb0ade32ae40e1fc1c8c8
+
+COCOAPODS: 0.33.1
