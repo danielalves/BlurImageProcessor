@@ -73,11 +73,11 @@ static void *originalTestRetinaImagePixelData = NULL;
                                                         va_start( argumentList, object );
                                                         
                                                         // Ignores originalImage, radius and iterations
-                                                        UIImage* originalImage = va_arg( argumentList, UIImage* );
-                                                        uint32_t radius = va_arg( argumentList, uint32_t );
+                                                        va_arg( argumentList, UIImage* );
+                                                        va_arg( argumentList, uint32_t );
                                                         
                                                         // uint8_t are promoted to int..
-                                                        uint8_t iterations = va_arg( argumentList, int );
+                                                        va_arg( argumentList, int );
                                                         
                                                         // Force an error
                                                         NSNumber * __autoreleasing *errorCode = va_arg( argumentList, NSNumber* __autoreleasing * );
