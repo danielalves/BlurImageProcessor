@@ -330,6 +330,10 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
     if( cancelLastOperation )
         [lastOperation cancel];
 
+    NSOperationQueue *callingQueue = [NSOperationQueue currentQueue];
+    if( !callingQueue )
+        callingQueue = [NSOperationQueue mainQueue];
+    
     NSBlockOperation *blurOperation = [[NSBlockOperation alloc] init];
 
     __weak NSBlockOperation *weakOperation = blurOperation;
@@ -376,7 +380,7 @@ NSString * const ALDBlurImageProcessorImageProcessingErrorNotificationErrorCodeK
             }
         }];
         
-        [[NSOperationQueue mainQueue] addOperation: notificationOperation];
+        [callingQueue addOperation: notificationOperation];
     }];
     
     // TODO : These 2 NSBlockOperation properties, queuePriority and threadPriority, could

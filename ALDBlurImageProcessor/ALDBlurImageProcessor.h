@@ -66,11 +66,15 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
  *
  *  Blur operations can be synchronous and asynchronous. Synchronous operations run on the thread/operation queue from which they
  *  were called. Each ALDBlurImageProcessor object has its own processing queue to run asynchronous operations, so it it easy to 
- *  manage them. Besides that, all delegate callbacks and notifications are called/fired on the main thread, so there's no need to
- *  worry about using the new blurred images passed as parameters directly into the user interface.
+ *  manage them. Besides that, all delegate callbacks, notifications and blocks are called/fired on the same thread/operation queue
+ *  from which the async blur processing operation was called. So there's no need to worry about using new blurred images directly
+ *  into the user interface if you fired the operations from the main thread/operation queue.
  *
- *  ALDBlurImageProcessor tries to achieve a good balance between memory and performance. It also listens to 
- *  UIApplicationDidReceiveMemoryWarningNotification notifications to clean temporary internal buffers on low memory conditions.
+ *  ALDBlurImageProcessor tries to achieve a good balance between memory and performance. It listens to
+ *  UIApplicationDidReceiveMemoryWarningNotification notifications to clean temporary internal buffers on low memory conditions. In
+ *  addition to that, it has an intelligent cache system: every blurredimage keeps cached while it is still living in the outside app.
+ *  So, if you call another blur operation with the same radius and iterations paramneters on the same original image, no processing occurs.
+ *  When the outside app stops referencing the blurred image, it is automatically removed from the cache, so there is no memory waste.
  */
 @interface ALDBlurImageProcessor : NSObject
 
@@ -147,7 +151,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
 
 /**
  *  This is the same as calling asyncBlurWithRadius:iterations:cancelingLastOperation:successBlock:errorBlock: with
- *  cancelingLastOperation equal to NO and no.
+ *  cancelingLastOperation equal to NO.
  *
  *  @param radius             The radius of the blur, specifying how many pixels will be considered when generating the output pixel
  *                            value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
@@ -180,7 +184,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
 /**
  *  Queues an asynchronous blur operation, targeting imageToProcess, on this object operation queue. When the new 
  *  blurred image is ready, or when an error occurs, calls the delegate and fires the respective notification, both on
- *  the main thread.
+ *  the thread/operation queue from which the async blur operation was fired.
  *
  *  @param radius              The radius of the blur, specifying how many pixels will be considered when generating the output pixel
  *                             value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
@@ -211,7 +215,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
 /**
  *  Queues an asynchronous blur operation, targeting imageToProcess, on this object operation queue. When the new
  *  blurred image is ready, or when an error occurs, calls the delegate, the respective block and fires the respective
- *  notification, all three operations on the main thread.
+ *  notification, all three operations on the thread/operation queue from which the async blur operation was fired.
  *
  *  @param radius              The radius of the blur, specifying how many pixels will be considered when generating the output pixel
  *                             value. For algorithm reasons, this must be an odd number. If you pass an even number, it will be increased
@@ -248,8 +252,7 @@ FOUNDATION_EXPORT NSString * const ALDBlurImageProcessorImageProcessingErrorNoti
                   errorBlock:( void(^)( NSNumber *errorCode ) )errorBlock;
 
 /**
- *  Cancels all asynchronous blur operations queued by previous calls to asyncBlurWithRadius:iterations:
- *  and/or asyncBlurWithRadius:iterations:cancelingLastOperation:
+ *  Cancels all asynchronous blur operations queued in this object processing queue.
  *
  *  @see asyncBlurWithRadius:iterations:
  *  @see asyncBlurWithRadius:iterations:successBlock:errorBlock:
