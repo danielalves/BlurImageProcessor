@@ -11,9 +11,8 @@
 // ald
 #import "ALDBlurImageProcessor.h"
 
-#pragma mark - Helper Functions
-
-static float lerp( float percent, float x, float y ){ return x + ( percent * ( y - x ) ); };
+// nitro
+#import <NitroMath/NTRMath.h>
 
 #pragma mark - Defines
 

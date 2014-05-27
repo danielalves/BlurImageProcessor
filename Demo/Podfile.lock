@@ -1,14 +1,17 @@
 PODS:
   - BlurImageProcessor (1.0.0)
+  - NitroMath (1.0.0)
 
 DEPENDENCIES:
   - BlurImageProcessor (from `../`)
+  - NitroMath
 
 EXTERNAL SOURCES:
   BlurImageProcessor:
     :path: ../
 
 SPEC CHECKSUMS:
-  BlurImageProcessor: 0afc6c6f0bb7d609ead9d29dec99e6ea68c57e0d
+  BlurImageProcessor: e3593df71586eb0b5824421946d37f94e92b0a94
+  NitroMath: ef0d81661200733d471798fb7d121c5aeed6e5c2
 
 COCOAPODS: 0.33.1
