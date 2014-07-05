@@ -2,6 +2,7 @@
 
 [![Version](http://cocoapod-badges.herokuapp.com/v/BlurImageProcessor/badge.png)](http://cocoadocs.org/docsets/BlurImageProcessor)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/BlurImageProcessor/badge.png)](http://cocoadocs.org/docsets/BlurImageProcessor)
+[![TravisCI](https://travis-ci.org/danielalves/BlurImageProcessor.svg?branch=master)](https://travis-ci.org/danielalves/BlurImageProcessor)
 
 <p align="center">
     <img src="./blur-image-processor.gif" width="320" height="568"/>
