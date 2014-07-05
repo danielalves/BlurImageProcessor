@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "536BBEAB497642B6BCF25364"
-               BuildableName = "libPods-ALDBlurImageProcessorTests.a"
-               BlueprintName = "Pods-ALDBlurImageProcessorTests"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "124FC2D3192D1B8600CD13FC"
                BuildableName = "libALDBlurImageProcessor.a"
                BlueprintName = "ALDBlurImageProcessor"
