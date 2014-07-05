@@ -3,4 +3,5 @@ before_script:
     - brew update
     - brew upgrade xctool
 script:
-    - xctool -project ./BlurImageProcessor/ALDBlurImageProcessor.xcodeproj -sdk iphonesimulator -scheme ALDBlurImageProcessor test
+    - cd BlurImageProcessor
+    - xctool -project ALDBlurImageProcessor.xcodeproj -sdk iphonesimulator -scheme ALDBlurImageProcessor test
