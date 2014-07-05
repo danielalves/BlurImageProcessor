@@ -13,7 +13,7 @@
 
 #pragma mark - Macros
 
-// Just to get compilation errors and be refactoring compliant. But this way we can't concat strings at compilation time =/
+// Just to get compilation errors and to be refactoring compliant. But this way we can't concat strings at compilation time =/
 #define EVAL_AND_STRINGIFY(x) (x ? __STRING(x) : __STRING(x))
 
 #pragma mark - Notification Consts
