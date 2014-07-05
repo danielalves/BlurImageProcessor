@@ -6,4 +6,4 @@ before_script:
 script:
     - cd BlurImageProcessor
     - pod install
-    - xctool -project ALDBlurImageProcessor.xcodeproj -sdk iphonesimulator -scheme ALDBlurImageProcessor test
+    - xctool -workspace ALDBlurImageProcessor.xcworkspace -sdk iphonesimulator -scheme ALDBlurImageProcessor test
