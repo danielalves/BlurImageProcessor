@@ -2,6 +2,7 @@ language: objective-c
 before_script:
     - brew update
     - brew upgrade xctool
+    - gem install cocoapods -v 0.32.1
 script:
     - cd BlurImageProcessor
     - pod install
