@@ -193,6 +193,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Daniel L. Alves";
+				TargetAttributes = {
+					124FC2E3192D1B8600CD13FC = {
+						TestTargetID = 124FC2D3192D1B8600CD13FC;
+					};
+				};
 			};
 			buildConfigurationList = 124FC2CF192D1B8600CD13FC /* Build configuration list for PBXProject "ALDBlurImageProcessor" */;
 			compatibilityVersion = "Xcode 3.2";
