@@ -4,4 +4,5 @@ before_script:
     - brew upgrade xctool
 script:
     - cd BlurImageProcessor
+    - pod install
     - xctool -project ALDBlurImageProcessor.xcodeproj -sdk iphonesimulator -scheme ALDBlurImageProcessor test
