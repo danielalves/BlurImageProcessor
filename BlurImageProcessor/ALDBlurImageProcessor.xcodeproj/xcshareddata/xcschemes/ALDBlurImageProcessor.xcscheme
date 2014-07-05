@@ -20,6 +20,34 @@
                ReferencedContainer = "container:ALDBlurImageProcessor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "871C4D81415740B484A23574"
+               BuildableName = "libPods-ALDBlurImageProcessorTests-Redefine.a"
+               BlueprintName = "Pods-ALDBlurImageProcessorTests-Redefine"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "536BBEAB497642B6BCF25364"
+               BuildableName = "libPods-ALDBlurImageProcessorTests.a"
+               BlueprintName = "Pods-ALDBlurImageProcessorTests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
