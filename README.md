@@ -157,7 +157,7 @@ Do not forget to remove the observers you've set:
 
 ## Requirements
 
-iOS 6.0 or higher
+iOS 6.0 or higher, ARC only
 
 ## Installation
 
