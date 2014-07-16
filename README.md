@@ -161,7 +161,7 @@ iOS 6.0 or higher, ARC only
 
 ## Installation
 
-BlurImageProcessor is available through [CocoaPods](http://cocoapods.org), to install
+**BlurImageProcessor** is available through [CocoaPods](http://cocoapods.org), to install
 it simply add the following line to your Podfile:
 
 ```ruby
@@ -178,5 +178,5 @@ pod "BlurImageProcessor"
 
 ## License
 
-BlurImageProcessor is available under the MIT license. See the LICENSE file for more info.
+**BlurImageProcessor** is available under the MIT license. See the LICENSE file for more info.
 
