@@ -1,3 +1,4 @@
-pod "BlurImageProcessor", :path => "../"
-
-pod "NitroMath"
+target :ALDBlurImageProcessorDemo do
+  pod "BlurImageProcessor", :path => "../"
+  pod "NitroMath"
+end

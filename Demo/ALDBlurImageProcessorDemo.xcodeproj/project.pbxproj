@@ -15,7 +15,7 @@
 		1240509F1925349700B42AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1240509D1925349700B42AFA /* Main.storyboard */; };
 		124050A21925349700B42AFA /* ALDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 124050A11925349700B42AFA /* ALDViewController.m */; };
 		124050A41925349700B42AFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124050A31925349700B42AFA /* Images.xcassets */; };
-		4390618F1646452787328752 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28794DA447364087A47CB42F /* libPods.a */; };
+		8440D1ED2CF0D0846DD5D93A /* libPods-ALDBlurImageProcessorDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA1B77DCCDBB5A15DA82C13 /* libPods-ALDBlurImageProcessorDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +32,9 @@
 		124050A01925349700B42AFA /* ALDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALDViewController.h; sourceTree = "<group>"; };
 		124050A11925349700B42AFA /* ALDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALDViewController.m; sourceTree = "<group>"; };
 		124050A31925349700B42AFA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		28794DA447364087A47CB42F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B254F9DFF5C8436498BF8920 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		4AA1B77DCCDBB5A15DA82C13 /* libPods-ALDBlurImageProcessorDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ALDBlurImageProcessorDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		644EA82A8F12C3E23A7366CA /* Pods-ALDBlurImageProcessorDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALDBlurImageProcessorDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ALDBlurImageProcessorDemo/Pods-ALDBlurImageProcessorDemo.release.xcconfig"; sourceTree = "<group>"; };
+		8E29EA1093EB0FD6C0D79FE8 /* Pods-ALDBlurImageProcessorDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALDBlurImageProcessorDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ALDBlurImageProcessorDemo/Pods-ALDBlurImageProcessorDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +44,7 @@
 			files = (
 				1240508C1925349700B42AFA /* Foundation.framework in Frameworks */,
 				124050901925349700B42AFA /* UIKit.framework in Frameworks */,
-				4390618F1646452787328752 /* libPods.a in Frameworks */,
+				8440D1ED2CF0D0846DD5D93A /* libPods-ALDBlurImageProcessorDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +57,7 @@
 				124050911925349700B42AFA /* ALDBlurImageProcessorDemo */,
 				1240508A1925349700B42AFA /* Frameworks */,
 				124050891925349700B42AFA /* Products */,
-				B254F9DFF5C8436498BF8920 /* Pods.xcconfig */,
+				F6DF05316CF1BE8D04EBDA65 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,7 +74,7 @@
 			children = (
 				1240508B1925349700B42AFA /* Foundation.framework */,
 				1240508F1925349700B42AFA /* UIKit.framework */,
-				28794DA447364087A47CB42F /* libPods.a */,
+				4AA1B77DCCDBB5A15DA82C13 /* libPods-ALDBlurImageProcessorDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -103,6 +104,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F6DF05316CF1BE8D04EBDA65 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E29EA1093EB0FD6C0D79FE8 /* Pods-ALDBlurImageProcessorDemo.debug.xcconfig */,
+				644EA82A8F12C3E23A7366CA /* Pods-ALDBlurImageProcessorDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,11 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 124050BA1925349700B42AFA /* Build configuration list for PBXNativeTarget "ALDBlurImageProcessorDemo" */;
 			buildPhases = (
-				F4A0AC456EE44E1B9D208DED /* Check Pods Manifest.lock */,
+				AE6159B91D1F7F483F89B544 /* [CP] Check Pods Manifest.lock */,
 				124050841925349700B42AFA /* Sources */,
 				124050851925349700B42AFA /* Frameworks */,
 				124050861925349700B42AFA /* Resources */,
-				2735AEAD6A2C4CB2BE6866A9 /* Copy Pods Resources */,
+				0075298A0EC445BC1987D353 /* [CP] Embed Pods Frameworks */,
+				EE746E71B8AC8F8AE004EEE6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,34 +178,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2735AEAD6A2C4CB2BE6866A9 /* Copy Pods Resources */ = {
+		0075298A0EC445BC1987D353 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ALDBlurImageProcessorDemo/Pods-ALDBlurImageProcessorDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F4A0AC456EE44E1B9D208DED /* Check Pods Manifest.lock */ = {
+		AE6159B91D1F7F483F89B544 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EE746E71B8AC8F8AE004EEE6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ALDBlurImageProcessorDemo/Pods-ALDBlurImageProcessorDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -304,7 +330,7 @@
 		};
 		124050BB1925349700B42AFA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B254F9DFF5C8436498BF8920 /* Pods.xcconfig */;
+			baseConfigurationReference = 8E29EA1093EB0FD6C0D79FE8 /* Pods-ALDBlurImageProcessorDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -319,7 +345,7 @@
 		};
 		124050BC1925349700B42AFA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B254F9DFF5C8436498BF8920 /* Pods.xcconfig */;
+			baseConfigurationReference = 644EA82A8F12C3E23A7366CA /* Pods-ALDBlurImageProcessorDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

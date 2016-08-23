@@ -8,10 +8,12 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   BlurImageProcessor:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  BlurImageProcessor: e3593df71586eb0b5824421946d37f94e92b0a94
-  NitroMath: ef0d81661200733d471798fb7d121c5aeed6e5c2
+  BlurImageProcessor: a4794ad3128748dbff8b40ae43ce9386d3667bba
+  NitroMath: dd9cfd79a2fc28e44c4131d22b467eebd11168ac
 
-COCOAPODS: 0.33.1
+PODFILE CHECKSUM: 9196d124b1d6460966660f20eff5b2f72fa8be4b
+
+COCOAPODS: 1.0.1
