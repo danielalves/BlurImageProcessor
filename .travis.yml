@@ -1,7 +1,4 @@
 language: objective-c
-before_script:
-    - brew update
-    - brew install xctool && brew cleanup xctool
 script:
     - cd BlurImageProcessor
     - pod install
